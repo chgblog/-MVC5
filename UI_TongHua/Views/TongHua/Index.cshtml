@@ -1,0 +1,63 @@
+﻿@model IEnumerable<CHG.Web.B_TongHua.Models.e_tonghuaxinxi>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index - @Session["LoginName"]</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TongHuaBiaoTi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TongHuaNeiRong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TongHuaLeiBieID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaiXu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TianJiaRiQi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ZhuangTai)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TongHuaBiaoTi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TongHuaNeiRong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TongHuaLeiBieID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaiXu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TianJiaRiQi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ZhuangTai)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TongHuaID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TongHuaID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TongHuaID })
+        </td>
+    </tr>
+}
+
+</table>

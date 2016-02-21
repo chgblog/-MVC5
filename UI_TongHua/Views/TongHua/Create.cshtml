@@ -1,0 +1,81 @@
+﻿@model CHG.Web.B_TongHua.Models.e_tonghuaxinxi
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>e_tonghuaxinxi</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.TongHuaBiaoTi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" value="@Model.TongHuaBiaoTi" id="txtTongHuaBiaoTi" name="TongHuaBiaoTi" class="form-control" />
+                <span class="text-danger">@Html.ValidationMessage("TongHuaBiaoTi")</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TongHuaNeiRong, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TongHuaNeiRong, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TongHuaNeiRong, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TongHuaLeiBieID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @{ 
+                    var strLeiBie1 = "";
+                    if(Model.TongHuaLeiBieID == 1)
+                    {
+                        strLeiBie1 = "selected='selected'";
+                    }
+                    var strLeiBie2 = "";
+                    if (Model.TongHuaLeiBieID == 2)
+                    {
+                        strLeiBie2 = "selected='selected'";
+                    }
+                    var strLeiBie3 = "";
+                    if (Model.TongHuaLeiBieID == 3)
+                    {
+                        strLeiBie3 = "selected='selected'";
+                    }
+               }
+                <select id="ddlTongHuaLeiBieID" name="TongHuaLeiBieID" class="form-control">
+                    <option value="" selected="selected">==请选择==</option>
+                    <option value="1" @strLeiBie1>类别1</option>
+                    <option value="2" @strLeiBie2>类别2</option>
+                    <option value="3" @strLeiBie3>类别3</option>
+                </select>
+                <span class="text-danger">@Html.ValidationMessage("TongHuaLeiBieID")</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PaiXu, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PaiXu, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PaiXu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
